@@ -13,7 +13,7 @@ class HelloWorld extends Component
     public function mount(Account $account)
     {
         $this->account = $account;
-        $this->response = $this->account->getBNBBalance();
+        $this->response = json_encode($this->account->getBNBBalance());
     }
 
     public function render()
