@@ -19,6 +19,14 @@ class Account
 		return $this->endpointRequest($this->url_mod.'&action=balance'.'&address='.env('BSC_WALLET_ADDRESS').'&tag=latest'.'&apikey='.env('BSCSCAN_API_KEY'));
 	}
 
+	// https://api.etherscan.io/api?module=account&action=txlist&address=<your hash>&startblock=0&endblock=99999999&sort=asc
+
+	public function getBscTxnList()
+	{
+		$response = $this->endpointRequest($this->url_mod.'&action=txlist'.'&address='.env('BSC_WALLET_ADDRESS').'&startblock=0&endblock=99999999&sort=desc'.'&apikey='.env('BSCSCAN_API_KEY'));
+		return $response->result;
+	}
+
 	public function endpointRequest($url)
 	{
 		try {
